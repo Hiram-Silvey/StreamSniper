@@ -1,0 +1,14 @@
+* = required
+
+current obtainable features:
+    *chat message:
+        *timestamp  -> json['data'][str(index)]['attributes']['timestamp']
+        *content    -> json['data'][str(index)]['attributes']['message']
+        deleted     -> json['data'][str(index)]['attributes']['deleted']
+        user        -> json['data'][str(index)]['attributes']['from']
+
+unobtained desired features:
+    number of viewers
+
+feature data format:
+    --
