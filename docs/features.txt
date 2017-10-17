@@ -12,3 +12,10 @@ unobtained desired features:
 
 feature data format:
     --
+
+This will be a classifier that classifies whether something notable happened on stream or not.
+Therefore, it will be classifying a GROUP of messages, rather than a single message.
+The high level features should be:
+    number of unique users that posted
+    the rate at which new messages are appearing relative to the number of viewers
+    ...
