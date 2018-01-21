@@ -4,7 +4,7 @@ import socket
 import time
 import re
 
-import irc_cfg
+import irc_cfg as cfg
 
 s = socket.socket()
 s.connect((cfg.HOST, cfg.PORT))
