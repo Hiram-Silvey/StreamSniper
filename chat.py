@@ -1,4 +1,4 @@
-import requests
+import requests, time
 import cfg
 
 URL_PREFIX = 'https://api.twitch.tv/v5/videos/'
@@ -12,12 +12,13 @@ def build_url(vid, offset=None, cursor=None):
     return url
 
 def get_chunk(url):
-    for retries in range(3, 0, -1):
+    for retries in range(3, -1, -1):
         chunk_req = requests.get(url)
         if not chunk_req.ok:
-            print('ERR: unable to fetch chunk for video {} at offset {}'.format(vid, offset_start), end='')
+            print('ERR: unable to fetch URL {}'.format(url), end='')
             if retries > 0:
                 print(', {} tries remaining...'.format(retries))
+                time.sleep(1)
                 continue
             else:
                 print()
@@ -61,7 +62,7 @@ def get_chat(vid, offset_start, offset_end):
                 continue
             commenter = comment['commenter']['_id']
             message = comment['message']['body']
-            chat.append((commenter, curr_offset-offset_start, message))
+            chat.append((commenter, str(curr_offset-offset_start), message))
         curr_offset_start = curr_offset
         curr_chunk = get_next_chunk(curr_chunk)
     return chat
